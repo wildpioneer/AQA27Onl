@@ -1,4 +1,6 @@
+import data.StaticProvider;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -8,6 +10,8 @@ public class CalcTest extends BaseTest {
     @Test
     public void testSum() {
         Assert.assertEquals(calculator.add(2, 3), 5, "Неверная сумма...");
+        Assert.assertEquals("Test", "Test");
+        Assert.assertEquals("Test", "Test", "sdfds");
     }
 
     @Test(enabled = false)
@@ -59,5 +63,11 @@ public class CalcTest extends BaseTest {
     public void exceptionTest2() {
         List list = null;
         int size = list.size();
+    }
+
+    @Test (dataProvider = "dataForSum", dataProviderClass = StaticProvider.class, threadPoolSize = 3)
+    public void testDataProvider(int a, int b, int result) throws InterruptedException {
+        System.out.println(Thread.currentThread().getName());
+        Assert.assertEquals(calculator.add(a, b), result, "Неверная сумма...");
     }
 }

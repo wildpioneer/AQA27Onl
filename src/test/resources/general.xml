@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Main Suite">
+    <test name="Smoke">
+        <classes>
+            <class name="AUnitTest">
+                <methods>
+                    <include name="test1"/>
+                </methods>
+            </class>
+            <class name="CalcTest">
+                <methods>
+                    <exclude name="invocationCountTest2"/>
+                </methods>
+            </class>
+            <class name="DependencyTest"/>
+        </classes>
+    </test>
+    <test name="Regression">
+        <classes>
+            <class name="PriorityTest"/>
+            <class name="CalcTest">
+                <methods>
+                    <include name="invocationCountTest2"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
