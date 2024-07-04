@@ -65,5 +65,55 @@ public class CssSelectorTest {
 
         // Поиск всех элементов с тэгом p которые идут сразу за элементом с тэго ul
         Assert.assertEquals(1, driver.findElements(By.cssSelector("ul + p")).size());
+
+        // Поиск всех элементов с тэгом div которые являются братьями элементу с тэгом p
+        Assert.assertEquals(2, driver.findElements(By.cssSelector("p ~ div")).size());
+
+        // Поиск всех элементов у которых присутствует аттрибут title
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("[title]")).size());
+
+        // Поиск всех элементов у которых присутствует аттрибут style с конкретным значением
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("[style='overflow: auto;']")).size());
+
+        // Поиск всех элементов у которых присутствует аттрибут id со значением заканчивающимся на какое-то value
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("[id$='ess']")).size());
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("[style$=':both;']")).size());
+
+        // Поиск всех элементов у которых присутствует аттрибут id со значением начинающимся на какое-то value
+        Assert.assertEquals(2, driver.findElements(By.cssSelector("[id^=La]")).size());
+
+        // Поиск всех элементов у которых присутствует аттрибут title со значением содержащим какой текст
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("[title*='beaut']")).size());
+
+        // Поиск всех элементов у которых присутствует аттрибут id со значением начинающимся на какое-то слово
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("[id|=my]")).size());
+
+        // Поиск всех элементов у которых присутствует аттрибут id со значением начинающимся на какое-то слово
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("[id|=my]")).size());
+
+        // Поиск всех элементов у которых присутствует аттрибут title со значением содержащим слово целиком
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("[title~=beautiful]")).size());
+
+        // Поиск всех disabled элементов
+        Assert.assertEquals(1, driver.findElements(By.cssSelector(":disabled")).size());
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("input[name='rr']:disabled")).size());
+
+        // Поиск всех enabled элементов
+        Assert.assertEquals(8, driver.findElements(By.cssSelector(":enabled")).size());
+
+        // Поиск всех выборанных элементов
+        Assert.assertEquals(2, driver.findElements(By.cssSelector(":checked")).size());
+
+        // Поиск всех элементов c пустым телом
+        Assert.assertEquals(16, driver.findElements(By.cssSelector(":empty")).size());
+
+        // Поиск элемента с тэгом p и которым является первым дочерним элементом
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("p:first-child")).size());
+
+        // Поиск элемента с тэгом p и которым является последним дочерним элементом
+        Assert.assertEquals(2, driver.findElements(By.cssSelector("p:last-child")).size());
+
+        // Поиск элемента с тэгом p и которым является n-ым дочерним элементом
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("p:nth-child(2)")).size());
     }
 }
