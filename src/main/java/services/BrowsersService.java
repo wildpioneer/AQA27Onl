@@ -41,7 +41,7 @@ public class BrowsersService {
         options.addArguments("--disable-gpu");
         options.addArguments("--ignore-certificate-errors");
         options.addArguments("--silent");
-        //options.addArguments("--start-maximized");
+        options.addArguments("--start-maximized");
         options.addArguments("--private");
 
         if (ReadProperties.isHeadless()) {
