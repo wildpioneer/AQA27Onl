@@ -34,7 +34,6 @@ public class BrowsersService {
     }
 
     public WebDriver getDriver() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         return driver;
     }
 
