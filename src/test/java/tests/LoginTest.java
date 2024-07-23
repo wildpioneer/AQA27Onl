@@ -1,6 +1,7 @@
 package tests;
 
 import baseEntities.BaseTest;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import configuration.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,6 +27,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(
                 userStep.successfulLogin(ReadProperties.username(), ReadProperties.password())
                         .isPageOpened());
+        Assert.assertTrue(false);
     }
 
     @Test
