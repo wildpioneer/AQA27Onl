@@ -1,6 +1,8 @@
 package pages;
 
 import baseEntities.BasePage;
+import elements.Button;
+import elements.Input;
 import elements.UIElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,20 +28,20 @@ public class LoginPage extends BasePage {
     }
 
     // Блок атомарных методов
-    public UIElement getEmailInput() {
-        return new UIElement(pageDriver, EMAIL_INPUT_LOCATOR);
+    public Input getEmailInput() {
+        return new Input(pageDriver, EMAIL_INPUT_LOCATOR);
     }
 
-    public WebElement getPasswordInput() {
-        return pageDriver.findElement(PASSWORD_INPUT_LOCATOR);
+    public Input getPasswordInput() {
+        return new Input(pageDriver, PASSWORD_INPUT_LOCATOR);
     }
 
-    public WebElement getLoginButton() {
-        return pageDriver.findElement(LOGIN_BUTTON_LOCATOR);
+    public Button getLoginButton() {
+        return new Button(pageDriver, LOGIN_BUTTON_LOCATOR);
     }
 
-    public WebElement getErrorTextElement() {
-        return pageDriver.findElement(ERROR_TEXT_LOCATOR);
+    public UIElement getErrorTextElement() {
+        return new UIElement(pageDriver, ERROR_TEXT_LOCATOR);
     }
 
     public WebElement getErrorFieldTextElement() {
@@ -47,11 +49,11 @@ public class LoginPage extends BasePage {
     }
 
     public void setEmailValue(String value) {
-        getEmailInput().sendKeys(value);
+        getEmailInput().write(value);
     }
 
     public void setPasswordValue(String value) {
-        getPasswordInput().sendKeys(value);
+        getPasswordInput().write(value);
     }
 
     public void clickLogin() {

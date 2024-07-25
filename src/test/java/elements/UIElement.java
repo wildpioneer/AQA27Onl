@@ -1,6 +1,7 @@
 package elements;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import services.WaitsService;
 
 import java.util.List;
@@ -10,10 +11,19 @@ public class UIElement implements WebElement {
     private WebElement webElement;
     private WebDriver driver;
 
-    public UIElement(WebDriver driver, By by) {
+    private UIElement(WebDriver driver) {
         this.driver = driver;
         waitsService = new WaitsService(driver);
+    }
+
+    public UIElement(WebDriver driver, By by) {
+        this(driver);
         webElement = waitsService.presenceOfElementLocated(by);
+    }
+
+    public UIElement(WebDriver driver, WebElement webElement) {
+        this(driver);
+        this.webElement = webElement;
     }
 
     @Override
@@ -22,7 +32,20 @@ public class UIElement implements WebElement {
             webElement.click();
         } catch (ElementNotInteractableException ex) {
             moveToElement();
-            webElement.click();
+            try {
+                webElement.click();
+            } catch (ElementClickInterceptedException ex1) {
+                Actions actions = new Actions(driver);
+
+                try {
+                    actions
+                            .click(webElement)
+                            .build()
+                            .perform();
+                } catch (ElementClickInterceptedException ex2) {
+                    jsClick();
+                }
+            }
         }
     }
 
@@ -69,46 +92,53 @@ public class UIElement implements WebElement {
 
     @Override
     public List<WebElement> findElements(By by) {
-        return List.of();
+        return webElement.findElements(by);
     }
 
     @Override
     public WebElement findElement(By by) {
-        //return driver.findElement(by);
         return webElement.findElement(by);
     }
 
     @Override
     public boolean isDisplayed() {
-        return false;
+        return webElement.isDisplayed();
     }
 
     @Override
     public Point getLocation() {
-        return null;
+        return webElement.getLocation();
     }
 
     @Override
     public Dimension getSize() {
-        return null;
+        return webElement.getSize();
     }
 
     @Override
     public Rectangle getRect() {
-        return null;
+        return webElement.getRect();
     }
 
     @Override
     public String getCssValue(String propertyName) {
-        return "";
+        return webElement.getCssValue(propertyName);
     }
 
     @Override
     public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
-        return null;
+        return webElement.getScreenshotAs(target);
     }
 
     public void moveToElement() {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+    }
+
+    public void jsClick() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", webElement);
+    }
+
+    public UIElement getParentElement() {
+        return new UIElement(driver, webElement.findElement(By.xpath("./..")));
     }
 }
