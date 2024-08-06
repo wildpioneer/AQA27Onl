@@ -10,8 +10,6 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.pageDriver = driver;
-
-        waitForOpen();
     }
 
     protected abstract By getPageIdentifier();
@@ -24,18 +22,4 @@ public abstract class BasePage {
         pageDriver.get(ReadProperties.getUrl() + pagePath);
     }
 
-    public void waitForOpen() {
-        int tryCount = 0;
-        int maxCount = WAIT_FOR_PAGE_LOADED_IN_SECONDS / ReadProperties.timeout();
-        boolean isPageOpenedIndicator = isPageOpened();
-
-        while (!isPageOpenedIndicator && (tryCount < maxCount)) {
-            tryCount++;
-            isPageOpenedIndicator = isPageOpened();
-        }
-
-        if (!isPageOpenedIndicator) {
-            throw new AssertionError("Page is not opened");
-        }
-    }
 }
