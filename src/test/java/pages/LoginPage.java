@@ -4,15 +4,25 @@ import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
-    // Блок описания локатор для элементов
-    private final By EMAIL_INPUT_LOCATOR = By.id("name");
-    private final By PASSWORD_INPUT_LOCATOR = By.id("password");
-    private final By LOGIN_BUTTON_LOCATOR = By.id("button_primary");
-    private final By ERROR_TEXT_LOCATOR = By.className("error-text");
-    private final By ERROR_FIELDTEXT_LOCATOR = By.className("loginpage-message");
 
+    // Блок описания локатор для элементов
+    @FindBy(id = "name")
+    public WebElement emailInput;
+
+    @FindBy(id = "password")
+    public WebElement passwordInput;
+
+    @FindBy(id = "button_primary")
+    public WebElement loginButton;
+
+    @FindBy(className = "error-text")
+    public WebElement errorTextLabel;
+
+    private final By ERROR_FIELDTEXT_LOCATOR = By.className("loginpage-message");
 
     // Блок иницализации
     public LoginPage(WebDriver driver) {
@@ -20,25 +30,21 @@ public class LoginPage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return LOGIN_BUTTON_LOCATOR;
+    protected WebElement getPageIdentifier() {
+        return loginButton;
     }
 
     // Блок атомарных методов
-    public WebElement getEmailInput() {
-        return pageDriver.findElement(EMAIL_INPUT_LOCATOR);
-    }
-
     public WebElement getPasswordInput() {
-        return pageDriver.findElement(PASSWORD_INPUT_LOCATOR);
+        return passwordInput;
     }
 
     public WebElement getLoginButton() {
-        return pageDriver.findElement(LOGIN_BUTTON_LOCATOR);
+        return loginButton;
     }
 
     public WebElement getErrorTextElement() {
-        return pageDriver.findElement(ERROR_TEXT_LOCATOR);
+        return errorTextLabel;
     }
 
     public WebElement getErrorFieldTextElement() {
@@ -46,7 +52,7 @@ public class LoginPage extends BasePage {
     }
 
     public void setEmailValue(String value) {
-        getEmailInput().sendKeys(value);
+        emailInput.sendKeys(value);
     }
 
     public void setPasswordValue(String value) {

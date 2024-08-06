@@ -3,6 +3,7 @@ package pages;
 import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class DashboardPage extends BasePage {
     private final static String pagePath = "/index.php?/dashboard";
@@ -18,8 +19,8 @@ public class DashboardPage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return headerTitleLabelLocator;
+    protected WebElement getPageIdentifier() {
+        return pageDriver.findElement(headerTitleLabelLocator);
     }
 
     public void openPageByUrl() {

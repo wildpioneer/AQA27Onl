@@ -13,8 +13,8 @@ public class BaseProjectPage extends BasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return NAME_INPUT_LOCATOR;
+    protected WebElement getPageIdentifier() {
+        return pageDriver.findElement(NAME_INPUT_LOCATOR);
     }
 
     public WebElement getNameInput() {
