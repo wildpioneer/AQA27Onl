@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
     protected WebDriver pageDriver;
-    protected final int WAIT_FOR_PAGE_LOADED_IN_SECONDS = 60;
 
     public BasePage(WebDriver driver) {
         this.pageDriver = driver;
