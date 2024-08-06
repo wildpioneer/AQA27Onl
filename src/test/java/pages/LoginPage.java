@@ -45,12 +45,16 @@ public class LoginPage extends BasePage {
         return pageDriver.findElement(ERROR_FIELDTEXT_LOCATOR);
     }
 
-    public void setEmailValue(String value) {
+    public LoginPage setEmailValue(String value) {
         getEmailInput().sendKeys(value);
+
+        return this;
     }
 
-    public void setPasswordValue(String value) {
+    public LoginPage setPasswordValue(String value) {
         getPasswordInput().sendKeys(value);
+
+        return this;
     }
 
     public void clickLogin() {

@@ -24,8 +24,9 @@ public class UserStep extends BaseStep {
     }
 
     private void login(String username, String password) {
-        loginPage.setEmailValue(username);
-        loginPage.setPasswordValue(password);
-        loginPage.clickLogin();
+        loginPage
+                .setEmailValue(username)
+                .setPasswordValue(password)
+                .clickLogin();
     }
 }
