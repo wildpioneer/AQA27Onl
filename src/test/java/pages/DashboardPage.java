@@ -9,12 +9,12 @@ public class DashboardPage extends BasePage {
 
     public TopMenuPage topMenuPage;
 
-    private final By headerTitleLabelLocator = By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]");
+    private static final By headerTitleLabelLocator = By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]");
 
     public DashboardPage(WebDriver driver) {
         super(driver);
 
-        topMenuPage = new TopMenuPage(driver);
+        //topMenuPage = new TopMenuPage(driver);
     }
 
     @Override
