@@ -1,6 +1,7 @@
 package steps;
 
 import baseEntities.BaseStep;
+import models.User;
 import org.openqa.selenium.WebDriver;
 import pages.DashboardPage;
 import pages.LoginPage;
@@ -11,23 +12,23 @@ public class UserStep extends BaseStep {
         super(driver);
     }
 
-    public DashboardPage successfulLogin(String username, String password) {
-        login(username, password);
+    public DashboardPage successfulLogin(User user) {
+        login(user);
 
         return new DashboardPage(driver);
     }
 
-    public LoginPage incorrectLogin(String username, String password) {
-        login(username, password);
+    public LoginPage incorrectLogin(User user) {
+        login(user);
 
         return new LoginPage(driver);
     }
 
-    private void login(String username, String password) {
+    private void login(User user) {
         loginPage = new LoginPage(driver);
 
-        loginPage.setEmailValue(username);
-        loginPage.setPasswordValue(password);
+        loginPage.setEmailValue(user.getUsername());
+        loginPage.setPasswordValue(user.getPassword());
         loginPage.clickLogin();
     }
 }

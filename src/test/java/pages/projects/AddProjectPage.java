@@ -10,4 +10,10 @@ public class AddProjectPage extends BaseProjectPage {
     public AddProjectPage(WebDriver driver) {
         super(driver);
     }
+
+    public AddProjectPage setProjectName(String projectName) {
+        // Реализация ввода значения в соответствующее поле
+
+        return this;
+    }
 }

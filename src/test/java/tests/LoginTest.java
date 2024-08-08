@@ -2,6 +2,7 @@ package tests;
 
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
+import models.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
@@ -24,13 +25,17 @@ public class LoginTest extends BaseTest {
     @Test
     public void shortSuccessLoginTest() {
         Assert.assertTrue(
-                userStep.successfulLogin(ReadProperties.username(), ReadProperties.password())
+                userStep.successfulLogin(admin)
                         .isPageOpened());
     }
 
     @Test
     public void incorrectEmailLoginTest() {
-        Assert.assertEquals(userStep.incorrectLogin("asdasd", ReadProperties.password())
+        User incorrectUser = new User();
+        incorrectUser.setUsername("asdasd");
+        incorrectUser.setPassword(ReadProperties.password());
+
+        Assert.assertEquals(userStep.incorrectLogin(incorrectUser)
                         .getErrorTextElement().getText(),
                 "Email/Login or Password is incorrect. Please try again.",
                 "Неверное сообщение об ошибке");
