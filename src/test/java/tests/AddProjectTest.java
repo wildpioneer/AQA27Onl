@@ -1,18 +1,18 @@
 package tests;
 
 import baseEntities.BaseTest;
+import com.github.javafaker.Faker;
 import models.Project;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AddProjectTest extends BaseTest {
 
     @Test
     public void addProjectTest1() {
-        Project project = new Project();
-        project.setName("asdasd");
-        project.setId(1);
-
-        projectStep.addProject(project);
+        Faker faker = new Faker();
+        String projectName = faker.name().firstName();
+        String projectAnnouncement = "TestDescription";
     }
 
     @Test

@@ -8,11 +8,13 @@ import org.testng.annotations.BeforeMethod;
 import services.BrowsersService;
 import steps.ProjectStep;
 import steps.UserStep;
+import utils.Director;
 
 public class BaseTest {
     protected WebDriver driver;
     protected UserStep userStep;
     protected ProjectStep projectStep;
+
 
     //Test Data
     protected User admin;
@@ -26,9 +28,7 @@ public class BaseTest {
 
         driver.get(ReadProperties.getUrl());
 
-        admin = new User();
-        admin.setUsername(ReadProperties.username());
-        admin.setPassword(ReadProperties.password());
+        admin = Director.getAdmin();
     }
 
     @AfterMethod

@@ -1,6 +1,7 @@
 package tests;
 
 import baseEntities.BaseTest;
+import com.github.javafaker.Faker;
 import configuration.ReadProperties;
 import models.User;
 import org.testng.Assert;
@@ -8,6 +9,8 @@ import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
 import steps.UserStep;
+
+import java.util.Random;
 
 public class LoginTest extends BaseTest {
 
@@ -20,6 +23,10 @@ public class LoginTest extends BaseTest {
 
         DashboardPage dashboardPage = new DashboardPage(driver);
         Assert.assertTrue(dashboardPage.isPageOpened());
+
+        Random rnd = new Random();
+        Faker faker = new Faker();
+        faker.
     }
 
     @Test
