@@ -24,6 +24,11 @@ public class LoginPage extends BasePage {
         return LOGIN_BUTTON_LOCATOR;
     }
 
+    @Override
+    protected String getPagePath() {
+        return "";
+    }
+
     // Блок атомарных методов
     public WebElement getEmailInput() {
         return pageDriver.findElement(EMAIL_INPUT_LOCATOR);

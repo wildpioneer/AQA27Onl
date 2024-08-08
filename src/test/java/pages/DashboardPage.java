@@ -22,7 +22,12 @@ public class DashboardPage extends BasePage {
         return headerTitleLabelLocator;
     }
 
+    @Override
+    protected String getPagePath() {
+        return pagePath;
+    }
+
     public void openPageByUrl() {
-        super.openPageByUrl(pagePath);
+        super.load();
     }
 }

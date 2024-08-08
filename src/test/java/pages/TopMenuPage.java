@@ -16,6 +16,11 @@ public class TopMenuPage extends BasePage {
         return TOP_PANEL_LOCATOR;
     }
 
+    @Override
+    protected String getPagePath() {
+        return "";
+    }
+
     public void logout() {
 
     }
