@@ -2,6 +2,7 @@ package baseEntities;
 
 import configuration.ReadProperties;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
@@ -17,7 +18,11 @@ public abstract class BasePage {
     protected abstract By getPageIdentifier();
 
     public boolean isPageOpened() {
-        return pageDriver.findElement(getPageIdentifier()).isDisplayed();
+        try {
+            return pageDriver.findElement(getPageIdentifier()).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 
     public void openPageByUrl(String pagePath) {
