@@ -13,6 +13,8 @@ public class AddProjectTest extends BaseTest {
         project.setId(1);
 
         projectStep.addProject(project);
+
+        System.out.println(project.toString());
     }
 
     @Test
