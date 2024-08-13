@@ -1,6 +1,7 @@
 package pages;
 
 import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -8,7 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import tests.LoggerTest;
 
-public class LoginPage extends BasePage {
+import static com.codeborne.selenide.Selenide.$;
+
+public class LoginPage {
     private Logger logger = LogManager.getLogger(LoginPage.class);
 
     // Блок описания локатор для элементов
@@ -19,50 +22,35 @@ public class LoginPage extends BasePage {
     private final By ERROR_FIELDTEXT_LOCATOR = By.className("loginpage-message");
 
 
-    // Блок иницализации
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
-    @Override
-    protected By getPageIdentifier() {
-        return LOGIN_BUTTON_LOCATOR;
-    }
-
-    @Override
-    protected String getPagePath() {
-        return "";
-    }
-
     // Блок атомарных методов
-    public WebElement getEmailInput() {
-        return pageDriver.findElement(EMAIL_INPUT_LOCATOR);
+    public SelenideElement getEmailInput() {
+        return $(EMAIL_INPUT_LOCATOR);
     }
 
-    public WebElement getPasswordInput() {
-        return pageDriver.findElement(PASSWORD_INPUT_LOCATOR);
+    public SelenideElement getPasswordInput() {
+        return $(PASSWORD_INPUT_LOCATOR);
     }
 
-    public WebElement getLoginButton() {
-        return pageDriver.findElement(LOGIN_BUTTON_LOCATOR);
+    public SelenideElement getLoginButton() {
+        return $(LOGIN_BUTTON_LOCATOR);
     }
 
-    public WebElement getErrorTextElement() {
-        return pageDriver.findElement(ERROR_TEXT_LOCATOR);
+    public SelenideElement getErrorTextElement() {
+        return $(ERROR_TEXT_LOCATOR);
     }
 
-    public WebElement getErrorFieldTextElement() {
-        return pageDriver.findElement(ERROR_FIELDTEXT_LOCATOR);
+    public SelenideElement getErrorFieldTextElement() {
+        return $(ERROR_FIELDTEXT_LOCATOR);
     }
 
     public void setEmailValue(String value) {
         logger.info(value);
-        getEmailInput().sendKeys(value);
+        getEmailInput().val(value);
     }
 
     public void setPasswordValue(String value) {
         logger.info(value);
-        getPasswordInput().sendKeys(value);
+        getPasswordInput().val(value);
     }
 
     public void clickLogin() {

@@ -14,20 +14,21 @@ import services.WaitsService;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
 public abstract class BasePage extends LoadableComponent<BasePage> {
     private Logger logger = LogManager.getLogger(this);
 
-    protected WebDriver pageDriver;
-    protected final int WAIT_FOR_PAGE_LOADED_IN_SECONDS = 60;
+    protected final int WAIT_FOR_PAGE_LOADED_IN_SECONDS = 30;
 
-    public BasePage(WebDriver driver) {
-        this.pageDriver = driver;
-
+    public BasePage() {
         get();
     }
 
     protected void load() {
-        pageDriver.get(ReadProperties.getUrl() + getPagePath());
+        open(ReadProperties.getUrl() + getPagePath());
     }
 
     protected void isLoaded() {
@@ -37,16 +38,12 @@ public abstract class BasePage extends LoadableComponent<BasePage> {
         }
     }
 
-
     protected abstract By getPageIdentifier();
     protected abstract String getPagePath();
 
     public boolean isPageOpened() {
-        try {
-            return new WaitsService(pageDriver, Duration.ofSeconds(WAIT_FOR_PAGE_LOADED_IN_SECONDS))
-                    .waitVisibilityOf(getPageIdentifier()).isDisplayed();
-        } catch (TimeoutException e) {
-            return false;
-        }
+            return $(getPageIdentifier())
+                    .shouldBe(visible, Duration.ofSeconds(WAIT_FOR_PAGE_LOADED_IN_SECONDS))
+                    .isDisplayed();
     }
 }

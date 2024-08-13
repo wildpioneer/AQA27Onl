@@ -1,13 +1,15 @@
 package baseEntities;
 
+import com.codeborne.selenide.WebDriverRunner;
 import configuration.ReadProperties;
 import models.User;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import services.BrowsersService;
 import steps.ProjectStep;
 import steps.UserStep;
+
+import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -19,12 +21,12 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        driver = new BrowsersService().getDriver();
+        open(ReadProperties.getUrl());
+
+        driver = WebDriverRunner.driver().getWebDriver();
 
         userStep = new UserStep(driver);
         projectStep = new ProjectStep(driver);
-
-        driver.get(ReadProperties.getUrl());
 
         admin = new User();
         admin.setUsername(ReadProperties.username());
