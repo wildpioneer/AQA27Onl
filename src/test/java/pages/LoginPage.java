@@ -1,11 +1,16 @@
 package pages;
 
 import baseEntities.BasePage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import tests.LoggerTest;
 
 public class LoginPage extends BasePage {
+    private Logger logger = LogManager.getLogger(LoginPage.class);
+
     // Блок описания локатор для элементов
     private final By EMAIL_INPUT_LOCATOR = By.id("name");
     private final By PASSWORD_INPUT_LOCATOR = By.id("password");
@@ -51,10 +56,12 @@ public class LoginPage extends BasePage {
     }
 
     public void setEmailValue(String value) {
+        logger.info(value);
         getEmailInput().sendKeys(value);
     }
 
     public void setPasswordValue(String value) {
+        logger.info(value);
         getPasswordInput().sendKeys(value);
     }
 
