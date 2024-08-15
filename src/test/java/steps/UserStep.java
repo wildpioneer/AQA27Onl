@@ -8,24 +8,24 @@ import pages.LoginPage;
 
 public class UserStep extends BaseStep {
 
-    public UserStep(WebDriver driver) {
-        super(driver);
+    public UserStep() {
+        super();
     }
 
     public DashboardPage successfulLogin(User user) {
         login(user);
 
-        return new DashboardPage(driver);
+        return new DashboardPage();
     }
 
     public LoginPage incorrectLogin(User user) {
         login(user);
 
-        return new LoginPage(driver);
+        return new LoginPage();
     }
 
     private void login(User user) {
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage();
 
         loginPage.setEmailValue(user.getUsername());
         loginPage.setPasswordValue(user.getPassword());

@@ -5,11 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static com.codeborne.selenide.Selenide.$;
+
 public class BaseProjectPage extends BasePage {
     private final By NAME_INPUT_LOCATOR = By.id("name");
 
-    public BaseProjectPage(WebDriver driver) {
-        super(driver);
+    public BaseProjectPage() {
+        super();
     }
 
     @Override
@@ -23,6 +25,6 @@ public class BaseProjectPage extends BasePage {
     }
 
     public WebElement getNameInput() {
-        return pageDriver.findElement(NAME_INPUT_LOCATOR);
+        return $(NAME_INPUT_LOCATOR);
     }
 }

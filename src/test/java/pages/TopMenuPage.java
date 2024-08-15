@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 public class TopMenuPage extends BasePage {
     private final By TOP_PANEL_LOCATOR = By.className("top-panel");
 
-    public TopMenuPage(WebDriver driver) {
-        super(driver);
+    public TopMenuPage() {
+        super();
     }
 
     @Override

@@ -18,24 +18,16 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public abstract class BasePage extends LoadableComponent<BasePage> {
+public abstract class BasePage {
     private Logger logger = LogManager.getLogger(this);
 
     protected final int WAIT_FOR_PAGE_LOADED_IN_SECONDS = 30;
 
     public BasePage() {
-        get();
     }
 
     protected void load() {
         open(ReadProperties.getUrl() + getPagePath());
-    }
-
-    protected void isLoaded() {
-        if (!isPageOpened()) {
-            logger.error("Page is not opened: " + this.getClass().getSimpleName());
-            throw new Error("Page is not loaded");
-        }
     }
 
     protected abstract By getPageIdentifier();

@@ -11,7 +11,7 @@ import tests.LoggerTest;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
     private Logger logger = LogManager.getLogger(LoginPage.class);
 
     // Блок описания локатор для элементов
@@ -21,6 +21,15 @@ public class LoginPage {
     private final By ERROR_TEXT_LOCATOR = By.className("error-text");
     private final By ERROR_FIELDTEXT_LOCATOR = By.className("loginpage-message");
 
+    @Override
+    protected By getPageIdentifier() {
+        return LOGIN_BUTTON_LOCATOR;
+    }
+
+    @Override
+    protected String getPagePath() {
+        return "/";
+    }
 
     // Блок атомарных методов
     public SelenideElement getEmailInput() {

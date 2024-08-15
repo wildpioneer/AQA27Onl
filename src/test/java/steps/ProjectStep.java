@@ -8,12 +8,12 @@ import pages.projects.AddProjectPage;
 
 public class ProjectStep extends BaseStep {
 
-    public ProjectStep(WebDriver driver) {
-        super(driver);
+    public ProjectStep() {
+        super();
     }
 
     public void addProject(Project project) {
-        AddProjectPage addProjectPage = new AddProjectPage(driver);
+        AddProjectPage addProjectPage = new AddProjectPage();
         addProjectPage.setProjectName(project.getName());
 
         System.out.println(project.getId());

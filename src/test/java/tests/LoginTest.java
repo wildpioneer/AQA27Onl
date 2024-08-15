@@ -13,12 +13,12 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void successLoginTest() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         loginPage.setEmailValue(ReadProperties.username());
         loginPage.setPasswordValue(ReadProperties.password());
         loginPage.clickLogin();
 
-        DashboardPage dashboardPage = new DashboardPage(driver);
+        DashboardPage dashboardPage = new DashboardPage();
         Assert.assertTrue(dashboardPage.isPageOpened());
     }
 

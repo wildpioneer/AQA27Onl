@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 public class AddProjectPage extends BaseProjectPage {
     private final By ADD_PROJECT_BUTTON_LOCATOR = By.id("accept");
 
-    public AddProjectPage(WebDriver driver) {
-        super(driver);
+    public AddProjectPage() {
+        super();
     }
 
     public AddProjectPage setProjectName(String projectName) {
