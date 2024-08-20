@@ -45,6 +45,7 @@ public class BrowsersService {
         options.addArguments("--silent");
         options.addArguments("--start-maximized");
         options.addArguments("--private");
+        options.addArguments("--disable-search-engine-choice-screen");
 
         if (ReadProperties.isHeadless()) {
             options.addArguments("--headless");
