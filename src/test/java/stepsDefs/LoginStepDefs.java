@@ -1,5 +1,6 @@
 package stepsDefs;
 
+import baseEntities.BaseTest;
 import configuration.ReadProperties;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
@@ -12,25 +13,19 @@ import pages.DashboardPage;
 import pages.LoginPage;
 import services.BrowsersService;
 
-public class LoginStepDefs {
-    WebDriver driver;
+public class LoginStepDefs extends BaseTest {
+    private BaseTest baseTest;
+
     LoginPage loginPage;
 
-    // Подготовительные
-    @Given("init browser")
-    public void initBrowser() {
-        driver = new BrowsersService().getDriver();
+    public LoginStepDefs(BaseTest baseTest) {
+        this.baseTest = baseTest;
     }
 
     @Given("open login page")
     public void openLoginPage() {
-        driver.get(ReadProperties.getUrl());
-        loginPage = new LoginPage(driver);
-    }
-
-    @After
-    public void closeBrowser() {
-        driver.quit();
+        baseTest.driver.get(ReadProperties.getUrl());
+        loginPage = new LoginPage(baseTest.driver);
     }
 
     // Атомарные
