@@ -1,0 +1,56 @@
+[
+  {
+    "name": "AQA_01_Project",
+    "id": 1,
+    "number": 1.3,
+    "flag": true,
+    "mentor": null,
+    "testcases": [
+      1,
+      2,
+      3
+    ],
+    "testcases1": [
+      "1",
+      "2",
+      "3"
+    ],
+    "testcases2": [
+      true,
+      false
+    ],
+    "employee": {
+      "name": "Petrov",
+      "age": 32,
+      "isDrinker": false,
+      "mentor": false
+    }
+  },
+  {
+    "name": "AQA_01_Project",
+    "id": 1,
+    "number": 1.3,
+    "flag": true,
+    "mentor": null,
+    "testcases": [
+      1,
+      2,
+      3
+    ],
+    "testcases1": [
+      "1",
+      "2",
+      "3"
+    ],
+    "testcases2": [
+      true,
+      false
+    ],
+    "employee": {
+      "name": "Petrov",
+      "age": 32,
+      "isDrinker": false,
+      "mentor": false
+    }
+  }
+]
