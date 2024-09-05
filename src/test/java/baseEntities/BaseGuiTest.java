@@ -10,10 +10,9 @@ import services.BrowsersService;
 import services.WaitsService;
 import steps.UserStep;
 import utils.InvokedListener;
-import utils.Listener;
 
 @Listeners(InvokedListener.class)
-public class BaseTest {
+public class BaseGuiTest {
     protected WebDriver driver;
     protected UserStep userStep;
     protected WaitsService waitsService;

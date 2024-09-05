@@ -1,15 +1,11 @@
-package tests;
+package tests.gui;
 
-import baseEntities.BaseTest;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import baseEntities.BaseGuiTest;
 import configuration.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.DashboardPage;
-import pages.LoginPage;
-import steps.UserStep;
 
-public class LoginTest extends BaseTest {
+public class LoginGuiTest extends BaseGuiTest {
 
     @Test
     public void shortSuccessLoginTest() {
