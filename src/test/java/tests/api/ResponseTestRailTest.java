@@ -1,11 +1,20 @@
 package tests.api;
 
 import baseEntities.BaseApiTest;
+import com.google.gson.Gson;
 import io.restassured.http.Method;
+import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
+import models.User;
+import models.Users;
 import org.apache.http.HttpStatus;
+import org.openqa.selenium.json.TypeToken;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
@@ -78,4 +87,35 @@ public class ResponseTestRailTest extends BaseApiTest {
         System.out.println(name);
     }
 
+    @Test
+    public void getAllUsersAsArray() {
+        Response response = userService.getUsers();
+
+        User[] users = response.getBody().jsonPath().getObject("users", User[].class);
+
+        System.out.println(users.length);
+        System.out.println(users[0]);
+        System.out.println(users[1]);
+    }
+
+    @Test
+    public void getAllUsersAsObject() {
+        Response response = userService.getUsers();
+
+        Users users = response.getBody().as(Users.class);
+
+        System.out.println(users);
+        System.out.println(users.getUsers()[0]);
+        System.out.println(users.getUsers()[1]);
+    }
+
+    @Test
+    public void getAllUsersAsType() {
+        Response response = userService.getUsers();
+
+        List<User> usersList = response.getBody().jsonPath().getList("users");
+
+        System.out.println(usersList.get(0));
+        System.out.println(usersList.get(1));
+    }
 }
