@@ -52,7 +52,7 @@ public class Hook extends BaseTest {
         baseTest.driver.quit();
     }
 
-    @AfterStep
+    @After
     public void isFailed(Scenario scenario) {
         if (scenario.isFailed()) {
             try {

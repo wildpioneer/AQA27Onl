@@ -7,6 +7,7 @@ import io.cucumber.java.AfterStep;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.DashboardPage;
@@ -23,6 +24,7 @@ public class LoginStepDefs extends BaseTest {
     }
 
     @Given("open login page")
+    @Step
     public void openLoginPage() {
         baseTest.driver.get(ReadProperties.getUrl());
         loginPage = new LoginPage(baseTest.driver);
