@@ -1,4 +1,4 @@
-package services;
+package services.api;
 
 import io.restassured.response.Response;
 

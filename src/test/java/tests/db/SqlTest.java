@@ -62,6 +62,5 @@ public class SqlTest extends BaseDBTest {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
